@@ -1,0 +1,72 @@
+--- #this indicates to the parser that this is the starting of yaml file
+scalars: are simple key value pairs.
+
+dictionaries/mappings:
+  definition: have nested properties under same subgroup
+  example: like this
+  another dictionary:
+    example: this is another dictionary
+
+arrays/sequences:
+  - this is an array
+  - definition: each item of an array should start by - with blanck space after
+
+handling line control:
+  controls:
+  - name: ">"
+    definition: removes newlines within the string. It's called Folded Style
+    example: >
+      Vita brevis,
+      ars longa,
+      occasio praeceps,
+      experimentum periculosum,
+      iudicium difficile.
+  
+  - name: "|"
+    definition: keeps all line breaks within the string. It's called Literal Style
+    example: >
+      Vita brevis,
+      ars longa,
+      occasio praeceps,
+      experimentum periculosum,
+      iudicium difficile.
+
+  - chomp modifiers: Multiline strings may end with whitespaces. Preserve chomp and strip chomp operators can be used either to preserve or strip the whitespaces. They can be used with block and pipe characters.
+    operators:
+      - name: "+"
+        definition: Preserving new line character
+        example: >+
+          Vita brevis,
+          ars longa,
+          occasio praeceps,
+          experimentum periculosum,
+          iudicium difficile.
+
+      - name: "-"
+        definition: Preserving new line character
+        example: >-
+          Vita brevis,
+          ars longa,
+          occasio praeceps,
+          experimentum periculosum,
+          iudicium difficile.
+
+comments:
+  sintax: "#"
+  example: you will not see anynthing after this sentence #got it? 
+
+implicit and explcit typing:
+  - boolean: !!bool true
+  - int: !!int 1998
+  - float: !!float 3.14
+  - string: !!str pneumonoultramicroscopicsilicovolcanoconiosis
+  - timestamp: !!timestamp 1966-07-30 08:30:00.10
+    attention: timestamp can be of various different formats, like
+    examples:
+    - canonical: !!timestamp 2001-12-15T02:59:43.1Z
+    - iso8601: !!timestamp 2001-12-14t21:59:43.10-05:00
+    - space separated: !!timestamp 2001-12-14 21:59:43.10 -5
+    - no time zone (Z): !!timestamp 2001-12-15 2:59:43.10
+    - date (00:00:00Z): !!timestamp 2002-12-14
+  - null value: !!null null
+... #this indicates to the parser that this is the ending of yaml file
